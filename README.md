@@ -1,49 +1,53 @@
-# 🔬 Napi Fizika & NASA Hírek
+# ⚛️ Everyday Physics & NASA News
 
-Modern, tudományos weboldal napi fizika leckékkel, otthon elvégezhető kísérleti projektekkel, és valós idejű hivatalos NASA űrhírekkel.
-
----
-
-## ✨ Főbb funkciók
-
-1. **📖 Napi Fizika Lecke** — Minden nap új téma a fizikából, közérthető magyarázattal, kiemelt képletekkel és megdöbbentő érdekességekkel (**Fun Fact**). A Gemini AI (`gemini-3.1-flash-lite`) generálja, offline módban pedig beépített leckékből töltődik be.
-2. **🔧 Napi Projekt** — Bárki által otthon elvégezhető, biztonságos és egyszerű fizikai kísérletek (anyaglista, lépések, magyarázat).
-3. **🚀 NASA Hírek** — Valós idejű, közvetlen hírfolyam a **NASA hivatalos hírcsatornájából** (APOD, űrkutatás, felfedezések). Minden hírnél közvetlen link visz a hivatalos NASA.gov cikkhez.
-4. **🌐 Beépített többnyelvű fordító** — 12 nyelv támogatása (magyar, angol, német, francia, spanyol, olasz, román, lengyel, japán, kínai, koreai, portugál) a Google Gemini segítségével.
-5. **🎨 Modern látványvilág** — Sötét űr-téma interaktív részecske háttérrel és reszponzív (mobilbarát) elrendezéssel.
+A modern, responsive science educational website featuring daily physics lessons, easy hands-on DIY experiments, real-time official NASA news, and built-in AI translation across 12 languages.
 
 ---
 
-## 📁 Fájlstruktúra
+## ✨ Features
 
-- `server.js` — Node.js Express szerver (Gemini API hívások, NASA RSS hírfolyam feldolgozás, fordítás, cache)
-- `index.html` — A weboldal szerkezete (Napi Lecke, Napi Projekt, NASA Hírek fülek)
-- `style.css` — Dizájn és kártya stílusok
-- `app.js` — Kliensoldali interakciók és adatrenderelés
-- `package.json` — Függőségek (`express`, `dotenv`, `cors`)
-- `.env` — API kulcs és hálózati beállítások (`HOST=0.0.0.0`, `PORT=3000`)
-- `.env.example` — Sablon környezeti fájl (GitHubra biztonságos)
-- `.gitignore` — Titkos adatok és csomagok kizárása
+1. **📖 Daily Lesson (Everyday Physics)**:
+   - Primary language is **English**.
+   - Generated dynamically every day via Google Gemini AI (`gemini-3.1-flash-lite`).
+   - Includes in-depth explanations, highlighted formulas, and a surprising **Did You Know?** fun fact.
+   - Dual-layer caching (server disk cache + browser localStorage) guarantees instantaneous loading on first visit without needing refreshes.
+
+2. **🔧 Daily Project**:
+   - Simple, safe home physics experiments anyone can do with everyday household items.
+   - Complete with required materials, step-by-step instructions, and scientific explanations.
+
+3. **🚀 NASA News**:
+   - Real-time updates directly from official NASA news feeds (Breaking News & APOD).
+   - High-resolution space photography, publication dates, summaries, and direct links to official NASA.gov articles.
+
+4. **🌐 Built-in 12-Language Translator**:
+   - Translate the entire site with one click into Hungarian, German, French, Spanish, Italian, Romanian, Polish, Japanese, Chinese, Korean, or Portuguese.
+   - **Dynamic Date Localization**: Month and weekday names automatically adapt to the selected language.
+
+5. **🎨 Design & Favicon**:
+   - Space-themed animated particle background.
+   - Custom SVG physics atom favicon (`favicon.svg`).
+   - Fully responsive on mobile, tablet, and desktop screens.
 
 ---
 
-## 🚀 Futtatás helyben vagy Debian szerveren
+## 🚀 Running on Localhost or Debian Server
 
-### 1. Függőségek telepítése
+### 1. Install dependencies:
 ```bash
 npm install
 ```
 
-### 2. Indítás
+### 2. Start the server:
 ```bash
 npm start
 ```
-A szerver elindul a `http://0.0.0.0:3000` címen, és a helyi hálózaton vagy a Debian szerver IP-címén keresztül bárhonnan elérhető.
+The server will bind to `http://0.0.0.0:3000` and immediately pre-fetch the day's lesson in the background.
 
-### 3. Futtatás a háttérben PM2-vel (Debian szerveren ajánlott):
+### 3. Run continuously in the background (PM2):
 ```bash
 sudo npm install -g pm2
-pm2 start server.js --name "napi-fizika"
+pm2 start server.js --name "everyday-physics"
 pm2 save
 pm2 startup
 ```
